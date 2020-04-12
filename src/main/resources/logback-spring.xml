@@ -1,6 +1,6 @@
 <configuration>
-    <include name="/org/springframework/boot/logging/logback/base.xml" />
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
 
     <logger name="cmd.lucas" level="DEBUG" />
-    <logger name="org.springframework" level="TRACE" />
+    <logger name="org.springframework" level="ERROR" />
 </configuration>
