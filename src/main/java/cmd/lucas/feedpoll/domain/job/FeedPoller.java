@@ -10,22 +10,24 @@ import org.slf4j.LoggerFactory;
 import java.util.Optional;
 
 public class FeedPoller extends Thread {
-    private final Query query;
     private final HttpRestRequestObject httpRestRequestObject;
 
-    private boolean isFinished = false;
-
-    public FeedPoller(Query query, HttpRestRequestObject httpRestRequestObject) {
+    public FeedPoller(HttpRestRequestObject httpRestRequestObject) {
         super();
-        this.query = query;
         this.httpRestRequestObject = httpRestRequestObject;
     }
 
     @Override
     public void run() {
+        // reset the control state on every run
         int tries = 0;
+        boolean isFinished = false;
+
+        // run this task and stop when, and only when this task's action
+        // is completed or has been attempted thrice
+
         while(!isFinished && tries++ < 3) {
-            Optional<GeneralResponse> response = httpRestRequestObject.setQuery(query).get();
+            Optional<GeneralResponse> response = httpRestRequestObject.get();
             if(response.isPresent()) {
                 GeneralResponse generalResponse = response.get();
                 if(generalResponse.getType() == ResponseType.SUCCESS) {

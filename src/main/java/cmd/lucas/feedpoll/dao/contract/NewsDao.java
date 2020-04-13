@@ -72,22 +72,6 @@ public interface NewsDao {
     }
 
     /**
-     * Delete news from the database
-     * @param id - id of the news to be deleted from the database
-     */
-    default void delete(int id) {
-
-    }
-
-    /**
-     * Find news in the database
-     * @param id - id the news to be retrieved in the databased
-     */
-    default void findById(int id) {
-
-    }
-
-    /**
      * Counts the total number of news that have been stored
      * @return - long
      */
@@ -95,14 +79,6 @@ public interface NewsDao {
         String sqlStatement = "SELECT COUNT(id) AS counter FROM news_article";
         Map<String, Object> data = jdbcTemplate().queryForMap(sqlStatement);
         return (Long) data.get("counter");
-    }
-
-    /**
-     * Build a list of all the news in the database
-     * @return - List<News>
-     */
-    default List<NewsArticle> getAllNews() {
-        return null;
     }
 
     /**
@@ -119,17 +95,5 @@ public interface NewsDao {
 
             return preparedStatement;
         }, new BeanPropertyRowMapper<>(NewsArticle.class));
-    }
-
-    /**
-     * Builds a list of news that have been stored after the origin tweet
-     * The default list is sorted in the descending order of storage date
-     * NB: The tweet with originNewsId will not be included in the result
-     * @param originNewsId - the base tweet id from whence to begin our search
-     * @param max - maximum size of list to be returned
-     * @return - List<News>
-     */
-    default List<NewsArticle> getSomeNews(String originNewsId, int max) {
-        return null;
     }
 }

@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface FeedService<T> {
     /**
-     * Based on the requirements, this method should be overridden
-     * to fetch the ten most recently stored data in the specific feed's table
+     * In accordance with the project requirements, thi method fetches
+     * the ten most recently stored data in the specific feed's table
      * @return - List<T>
      */
     default List<T> fetchLatestTen() {
