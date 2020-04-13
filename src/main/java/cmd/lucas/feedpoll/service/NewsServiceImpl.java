@@ -1,6 +1,6 @@
 package cmd.lucas.feedpoll.service;
 
-import cmd.lucas.feedpoll.model.News;
+import cmd.lucas.feedpoll.model.NewsArticle;
 import cmd.lucas.feedpoll.repository.NewsRepository;
 import cmd.lucas.feedpoll.service.contract.FeedService;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NewsServiceImpl implements FeedService<News> {
+public class NewsServiceImpl implements FeedService<NewsArticle> {
 
     private final NewsRepository newsRepository;
 
@@ -17,7 +17,7 @@ public class NewsServiceImpl implements FeedService<News> {
     }
 
     @Override
-    public List<News> fetchLatestTen() {
+    public List<NewsArticle> fetchLatestTen() {
         return newsRepository.getSomeNews(10);
     }
 }

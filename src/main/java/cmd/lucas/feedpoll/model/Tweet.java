@@ -5,6 +5,6 @@ import java.time.LocalDate;
 
 public class Tweet {
     BigInteger id;
-    String firstName;
-    LocalDate dob;
+    String tweet_url;
+    LocalDate storageDate;
 }

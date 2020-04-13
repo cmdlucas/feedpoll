@@ -1,5 +1,5 @@
 
-package cmd.lucas.feedpoll.util.apirespons.newsapi;
+package cmd.lucas.feedpoll.util.apiresponse.newsapi;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

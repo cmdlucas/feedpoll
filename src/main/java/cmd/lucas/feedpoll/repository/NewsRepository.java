@@ -1,7 +1,7 @@
 package cmd.lucas.feedpoll.repository;
 
 import cmd.lucas.feedpoll.dao.contract.NewsDao;
-import cmd.lucas.feedpoll.model.News;
+import cmd.lucas.feedpoll.model.NewsArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
@@ -18,9 +18,9 @@ public class NewsRepository {
         this.newsDao = newsDao;
     }
 
-    public void storeNews(@NonNull List<News> newsList) {
-        for(News news : newsList) {
-            newsDao.create(news);
+    public void storeNews(@NonNull List<NewsArticle> newsArticleList) {
+        for(NewsArticle newsArticle : newsArticleList) {
+            newsDao.create(newsArticle);
         }
     }
 
@@ -28,7 +28,7 @@ public class NewsRepository {
         return newsDao.totalNews();
     }
 
-    public List<News> getSomeNews(int N) {
+    public List<NewsArticle> getSomeNews(int N) {
         return newsDao.getSomeNews(N);
     }
 }

@@ -1,5 +1,5 @@
 
-package cmd.lucas.feedpoll.util.apirespons.newsapi;
+package cmd.lucas.feedpoll.util.apiresponse.newsapi;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -10,6 +10,9 @@ public class NewsData {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("message")
+    @Expose
+    private String message;
     @SerializedName("totalResults")
     @Expose
     private Integer totalResults;
@@ -23,6 +26,14 @@ public class NewsData {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Integer getTotalResults() {

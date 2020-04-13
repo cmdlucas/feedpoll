@@ -1,7 +1,7 @@
 package cmd.lucas.feedpoll.config;
 
 import cmd.lucas.feedpoll.qualifier.NewsApiConnection;
-import cmd.lucas.feedpoll.util.apiresponse.Urls;
+import cmd.lucas.feedpoll.util.Urls;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import okhttp3.Interceptor;
