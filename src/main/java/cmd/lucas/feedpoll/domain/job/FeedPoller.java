@@ -1,4 +1,4 @@
-package cmd.lucas.feedpoll.worker;
+package cmd.lucas.feedpoll.domain.job;
 
 public class FeedPoller extends Thread {
     @Override

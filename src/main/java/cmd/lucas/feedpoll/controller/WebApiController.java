@@ -1,30 +1,34 @@
 package cmd.lucas.feedpoll.controller;
 
-import cmd.lucas.feedpoll.util.Mappings;
+import cmd.lucas.feedpoll.model.News;
+import cmd.lucas.feedpoll.model.Tweet;
+import cmd.lucas.feedpoll.service.contract.FeedService;
+import cmd.lucas.feedpoll.util.apiresponse.Mappings;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class WebApiController {
 
-    @GetMapping(Mappings.FEED)
-    public TestResult feed() {
-        return new TestResult(2);
+    private final FeedService<News> newsFeedService;
+    private final FeedService<Tweet> tweetFeedService;
+
+    @Autowired
+    public WebApiController(FeedService<News> newsFeedService, FeedService<Tweet> tweetFeedService) {
+        this.newsFeedService = newsFeedService;
+        this.tweetFeedService = tweetFeedService;
     }
 
-    private static class TestResult {
-        private int age;
+    @GetMapping(Mappings.NEWS)
+    public List<News> news() {
+        return newsFeedService.fetchLatestTen();
+    }
 
-        public TestResult(int age) {
-            this.age = age;
-        }
-
-        public int getAge() {
-            return age;
-        }
-
-        public void setAge(int age) {
-            this.age = age;
-        }
+    @GetMapping(Mappings.TWEETS)
+    public List<Tweet> tweets() {
+        return tweetFeedService.fetchLatestTen();
     }
 }

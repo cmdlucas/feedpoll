@@ -13,6 +13,10 @@
         <version>2.2.6.RELEASE</version>
         <relativePath />
     </parent>
+    <properties>
+        <retrofit2.version>2.8.1</retrofit2.version>
+        <okhttp3.version>4.5.0</okhttp3.version>
+    </properties>
 
     <dependencies>
 
@@ -33,18 +37,34 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Lombok to provide class boilerplate code e.g. Getters, Setters-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
         <!-- Retrofit for making HTTP requests -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.7.2</version>
+            <version>${retrofit2.version}</version>
         </dependency>
+
+        <!-- Gson converter to convert data to and from HTTP requests -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>${retrofit2.version}</version>
+        </dependency>
+
+        <!-- OkHttp to handle making HTTP requests -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp3.version}</version>
+        </dependency>
+
+        <!-- LoggingInterceptor to help us intercept logging info when making HTTP requests -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>${okhttp3.version}</version>
+        </dependency>
+
 
         <!-- Database Dependencies -->
 
@@ -56,7 +76,6 @@
         </dependency>
 
         <!-- *TEST DEPENDENCIES* -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
