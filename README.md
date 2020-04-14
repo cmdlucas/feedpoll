@@ -15,4 +15,9 @@ Periodic polling would start automatically. You will now be able to view the las
 #####Docker
 
 
+###Testing
+
+In your IDE (e.g. IntelliJ), under Maven > Lifecycle, double-click `test`
+
+
 

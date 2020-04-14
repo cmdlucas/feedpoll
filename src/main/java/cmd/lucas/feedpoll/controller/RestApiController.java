@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class WebApiController {
+public class RestApiController {
 
     private final FeedService<NewsArticle> newsFeedService;
 
     @Autowired
-    public WebApiController(FeedService<NewsArticle> newsFeedService) {
+    public RestApiController(FeedService<NewsArticle> newsFeedService) {
         this.newsFeedService = newsFeedService;
     }
 

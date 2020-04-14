@@ -31,4 +31,8 @@ public class NewsRepository {
     public List<NewsArticle> getSomeNews(int N) {
         return newsDao.getSomeNews(N);
     }
+
+    public void emptyNewsArticleTable() {
+        newsDao.truncate();
+    }
 }

@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executors;
@@ -37,12 +39,9 @@ public class PollerApp {
         this.httpRestRequestObject = httpRestRequestObject;
     }
 
-    private void setExecutorService() {
-        this.executorService = Executors.newScheduledThreadPool(corePoolSize);
-    }
-
-    public ScheduledExecutorService getExecutorService() {
-        return executorService;
+    @EventListener(ApplicationReadyEvent.class)
+    public void onStart(ApplicationReadyEvent event) {
+        this.start();
     }
 
     public void start() {
@@ -61,6 +60,14 @@ public class PollerApp {
         }
 
         log.info("All tasks scheduled. Polling started!");
+    }
+
+    private void setExecutorService() {
+        this.executorService = Executors.newScheduledThreadPool(corePoolSize);
+    }
+
+    public ScheduledExecutorService getExecutorService() {
+        return executorService;
     }
 
     public String[] getKeywords() {

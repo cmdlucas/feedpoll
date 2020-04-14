@@ -1,9 +1,11 @@
 package cmd.lucas.feedpoll;
 
+import cmd.lucas.feedpoll.dao.contract.NewsDao;
 import cmd.lucas.feedpoll.model.NewsArticle;
 import cmd.lucas.feedpoll.repository.NewsRepository;
 import cmd.lucas.feedpoll.utils.DataGenerator;
 import cmd.lucas.feedpoll.utils.TestResponses;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +19,11 @@ public class NewsRepositoryTest {
 
     @Autowired
     private NewsRepository newsRepository;
+
+    @BeforeEach
+    private void emptyTable() {
+        newsRepository.emptyNewsArticleTable();
+    }
 
     @Test
     void shouldReturnEmptyListIfNothingWasStored() {

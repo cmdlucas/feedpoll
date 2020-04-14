@@ -1,6 +1,6 @@
 package cmd.lucas.feedpoll;
 
-import cmd.lucas.feedpoll.controller.WebApiController;
+import cmd.lucas.feedpoll.controller.RestApiController;
 import cmd.lucas.feedpoll.model.NewsArticle;
 import cmd.lucas.feedpoll.service.contract.FeedService;
 import cmd.lucas.feedpoll.util.Mappings;
@@ -19,8 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @AutoConfigureMockMvc
-@WebMvcTest(WebApiController.class)
-public class WebApiControllerTests {
+@WebMvcTest(RestApiController.class)
+public class RestApiControllerTests {
     @Autowired
     private MockMvc mockMvc;
 

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationEvent;
 
 import javax.validation.UnexpectedTypeException;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class PollerAppTests {
     @Autowired
     private PollerApp pollerApp;
 
-    @Autowired
+    @MockBean
     private HttpRestRequestObject httpRestRequestObject;
 
     @MockBean
@@ -47,9 +48,10 @@ public class PollerAppTests {
 
     @Test
     void feedPollerShouldMakeHttpRequestThriceFromFirstFailure(){
-        HttpRestRequestObject tempHttpRestRequestObject = mock(httpRestRequestObject.getClass());
-        new FeedPoller(tempHttpRestRequestObject).run();
-        verify(tempHttpRestRequestObject, times(3)).get();
+        GeneralResponse failureResponse = new GeneralResponse(ResponseType.FAILED, "Failed!");
+        when(httpRestRequestObject.get()).thenReturn(Optional.of(failureResponse));
+        new FeedPoller(httpRestRequestObject).run();
+        verify(httpRestRequestObject, times(3)).get();
     }
 
     @Test

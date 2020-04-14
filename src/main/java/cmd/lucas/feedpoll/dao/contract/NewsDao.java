@@ -96,4 +96,9 @@ public interface NewsDao {
             return preparedStatement;
         }, new BeanPropertyRowMapper<>(NewsArticle.class));
     }
+
+    default void truncate() {
+        String sqlStatement = "TRUNCATE TABLE news_article";
+        jdbcTemplate().execute(sqlStatement);
+    }
 }
