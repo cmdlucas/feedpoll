@@ -1,4 +1,6 @@
-This project polls for news  from the [newsapi.org](https://newsapi.org) API and stores valuable information in a memory DB.
+## About
+
+This project polls for news  from the [newsapi.org](https://newsapi.org) API and stores the information in an in-memory DB (H2).
 
 ## Install 
 
@@ -12,7 +14,7 @@ Then in your IDE (e.g. IntelliJ), under Maven > Plugins > spring-boot, double-cl
 
 `spring-boot:run`
 
-Periodic polling would start automatically. You will now be able to view the last stored news in your browser on [https://localhost:8080/news](https://localhost:8080/news) 
+Periodic polling (every 90sec) would start automatically. You will now be able to view the last stored news in your browser on [https://localhost:8080/news](https://localhost:8080/news) 
 
 #### Docker
 
