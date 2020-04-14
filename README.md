@@ -1,8 +1,8 @@
 This project polls for tweets from Twitter and stores valuable information
 
-###Install 
+### Install 
 
-#####Git
+##### Git
 
 First clone to your machine
 
@@ -14,13 +14,13 @@ Then in your IDE (e.g. IntelliJ), under Maven > Plugins > spring-boot, double-cl
 
 Periodic polling would start automatically. You will now be able to view the last stored news in your browser on [https://localhost:8080/news](https://localhost:8080/news) 
 
-#####Docker
+##### Docker
 
 To pull and run this project as a Docker container, you can run this command from your console:
 
 `docker run cmdlucas/feedpoll`
 
-###Testing
+### Testing
 
 In your IDE (e.g. IntelliJ), under Maven > Lifecycle, double-click `test`
 
