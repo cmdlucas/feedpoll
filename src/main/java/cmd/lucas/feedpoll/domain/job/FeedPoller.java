@@ -1,7 +1,6 @@
 package cmd.lucas.feedpoll.domain.job;
 
 import cmd.lucas.feedpoll.domain.http.contract.HttpRestRequestObject;
-import cmd.lucas.feedpoll.util.apirequest.contract.Query;
 import cmd.lucas.feedpoll.util.opsresponse.GeneralResponse;
 import cmd.lucas.feedpoll.util.opsresponse.ResponseType;
 import org.slf4j.Logger;
@@ -9,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
-public class FeedPoller extends Thread {
+public class FeedPoller implements Runnable {
     private final HttpRestRequestObject httpRestRequestObject;
 
     public FeedPoller(HttpRestRequestObject httpRestRequestObject) {
@@ -23,7 +22,7 @@ public class FeedPoller extends Thread {
         int tries = 0;
         boolean isFinished = false;
 
-        // run this task and stop when, and only when this task's action
+        // run this task and stop when, and only when, this task's action
         // is completed or has been attempted thrice
 
         while(!isFinished && tries++ < 3) {
@@ -35,6 +34,12 @@ public class FeedPoller extends Thread {
                     log.info(generalResponse.getMessage());
                 } else {
                     log.error(generalResponse.getMessage());
+                    try {
+                        // wait for 5 secs before trying again
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

@@ -18,14 +18,14 @@ public class NewsRepository {
         this.newsDao = newsDao;
     }
 
+    public long countNewsArticles() {
+        return newsDao.totalNews();
+    }
+
     public void storeNews(@NonNull List<NewsArticle> newsArticleList) {
         for(NewsArticle newsArticle : newsArticleList) {
             newsDao.create(newsArticle);
         }
-    }
-
-    public long totalNews(){
-        return newsDao.totalNews();
     }
 
     public List<NewsArticle> getSomeNews(int N) {

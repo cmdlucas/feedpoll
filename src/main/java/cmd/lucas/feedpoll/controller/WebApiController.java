@@ -1,11 +1,13 @@
 package cmd.lucas.feedpoll.controller;
 
 import cmd.lucas.feedpoll.model.NewsArticle;
-import cmd.lucas.feedpoll.model.Tweet;
 import cmd.lucas.feedpoll.service.contract.FeedService;
 import cmd.lucas.feedpoll.util.Mappings;
+import cmd.lucas.feedpoll.util.Responses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,12 +16,10 @@ import java.util.List;
 public class WebApiController {
 
     private final FeedService<NewsArticle> newsFeedService;
-    private final FeedService<Tweet> tweetFeedService;
 
     @Autowired
-    public WebApiController(FeedService<NewsArticle> newsFeedService, FeedService<Tweet> tweetFeedService) {
+    public WebApiController(FeedService<NewsArticle> newsFeedService) {
         this.newsFeedService = newsFeedService;
-        this.tweetFeedService = tweetFeedService;
     }
 
     @GetMapping(Mappings.NEWS)
@@ -27,8 +27,9 @@ public class WebApiController {
         return newsFeedService.fetchLatestTen();
     }
 
-    @GetMapping(Mappings.TWEETS)
-    public List<Tweet> tweets() {
-        return tweetFeedService.fetchLatestTen();
+    @ResponseBody
+    @RequestMapping("/")
+    public String home() {
+        return Responses.LANDING_PAGE;
     }
 }

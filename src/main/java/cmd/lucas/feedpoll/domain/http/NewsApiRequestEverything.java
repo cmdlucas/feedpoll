@@ -25,7 +25,6 @@ import java.util.Optional;
 
 @Component
 public class NewsApiRequestEverything implements HttpRestRequestObject {
-    private static Logger log = LoggerFactory.getLogger(NewsApiRequestEverything.class);
 
     private final NewsApi newsApi;
     private final NewsRepository newsRepository;
@@ -49,7 +48,7 @@ public class NewsApiRequestEverything implements HttpRestRequestObject {
     @Override
     public Optional<GeneralResponse> get() {
         try {
-            // Undefined request query parameters
+            // undefined request query parameters
             if(this.query == null) {
                 String errorMessage = "Cannot initialize HTTP request on " + Urls.NEWS_API_ORG_BASE_URL + " with empty query parameters";
                 throw new Exception(errorMessage);
