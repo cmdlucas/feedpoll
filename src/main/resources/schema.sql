@@ -1,6 +1,16 @@
-CREATE TABLE IF NOT EXISTS tweets (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    user_id BIGINT NOT NULL,
-    tweet_id BIGINT NOT NULL,
-    PRIMARY KEY (`id`)
+/**
+ * CREATE NEWS TABLE
+ */
+CREATE TABLE IF NOT EXISTS news_article (
+    id BIGINT IDENTITY (1, 1) PRIMARY KEY,
+    source_id VARCHAR(191),
+    source_name VARCHAR(191) NOT NULL,
+    author VARCHAR(191),
+    title TEXT,
+    description LONGTEXT,
+    url TEXT,
+    url_to_image TEXT,
+    published_at VARCHAR(191),
+    storage_timestamp BIGINT NOT NULL,
+    storage_date VARCHAR(191) NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
