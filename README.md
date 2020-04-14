@@ -18,7 +18,7 @@ Periodic polling would start automatically. You will now be able to view the las
 
 To pull and run this project as a Docker container, you can run this command from your console:
 
-`docker run cmdlucas/feedpoll`
+`docker run -p 8080:8080 cmdlucas/feedpoll`
 
 ## Testing
 
