@@ -1,4 +1,4 @@
-This project polls for tweets from Twitter and stores valuable information
+This project polls for news  from the [newsapi.org](https://newsapi.org) API and stores valuable information in a memory DB.
 
 ## Install 
 
