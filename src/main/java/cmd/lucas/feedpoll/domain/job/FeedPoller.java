@@ -12,7 +12,6 @@ public class FeedPoller implements Runnable {
     private final HttpRestRequestObject httpRestRequestObject;
 
     public FeedPoller(HttpRestRequestObject httpRestRequestObject) {
-        super();
         this.httpRestRequestObject = httpRestRequestObject;
     }
 

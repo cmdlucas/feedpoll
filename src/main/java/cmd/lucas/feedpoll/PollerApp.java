@@ -6,7 +6,6 @@ import cmd.lucas.feedpoll.util.ApiKeys;
 import cmd.lucas.feedpoll.util.Timer;
 import cmd.lucas.feedpoll.util.apirequest.contract.Query;
 import cmd.lucas.feedpoll.util.apirequest.newsapi.EverythingQuery;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 
