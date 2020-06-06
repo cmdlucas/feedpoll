@@ -1,7 +1,7 @@
 package cmd.lucas.feedpoll.config;
 
-import cmd.lucas.feedpoll.domain.service.NewsApi;
-import cmd.lucas.feedpoll.qualifier.NewsApiConnection;
+import cmd.lucas.feedpoll.domain.api.request.NewsApi;
+import cmd.lucas.feedpoll.config.qualifier.NewsApiConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

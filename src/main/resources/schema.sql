@@ -11,6 +11,5 @@ CREATE TABLE IF NOT EXISTS news_article (
     url TEXT,
     url_to_image TEXT,
     published_at VARCHAR(191),
-    storage_timestamp BIGINT NOT NULL,
-    storage_date VARCHAR(191) NOT NULL
+    storage_date TIMESTAMP NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
