@@ -2,7 +2,6 @@ package cmd.lucas.feedpoll;
 
 import cmd.lucas.feedpoll.controller.RestApiController;
 import cmd.lucas.feedpoll.domain.dto.NewsArticleDto;
-import cmd.lucas.feedpoll.domain.model.NewsArticle;
 import cmd.lucas.feedpoll.service.FeedService;
 import cmd.lucas.feedpoll.controller.Mappings;
 import cmd.lucas.feedpoll.utils.TestResponses;

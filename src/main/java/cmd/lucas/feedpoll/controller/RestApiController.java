@@ -1,6 +1,5 @@
 package cmd.lucas.feedpoll.controller;
 
-import cmd.lucas.feedpoll.config.qualifier.HelloMessage;
 import cmd.lucas.feedpoll.domain.dto.NewsArticleDto;
 import cmd.lucas.feedpoll.service.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
