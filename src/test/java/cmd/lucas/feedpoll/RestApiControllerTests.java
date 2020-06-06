@@ -1,9 +1,10 @@
 package cmd.lucas.feedpoll;
 
 import cmd.lucas.feedpoll.controller.RestApiController;
-import cmd.lucas.feedpoll.model.NewsArticle;
-import cmd.lucas.feedpoll.service.contract.FeedService;
-import cmd.lucas.feedpoll.util.Mappings;
+import cmd.lucas.feedpoll.domain.dto.NewsArticleDto;
+import cmd.lucas.feedpoll.domain.model.NewsArticle;
+import cmd.lucas.feedpoll.service.FeedService;
+import cmd.lucas.feedpoll.controller.Mappings;
 import cmd.lucas.feedpoll.utils.TestResponses;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,7 @@ public class RestApiControllerTests {
     private MockMvc mockMvc;
 
     @MockBean
-    private PollerApp pollerApp;
-
-    @MockBean
-    private FeedService<NewsArticle> newsArticleFeedService;
+    private FeedService<NewsArticleDto> newsArticleFeedService;
 
     @Test
     public void newsEndpointShouldReturnEmptyJsonArrayWhenNoDataSet() throws Exception {

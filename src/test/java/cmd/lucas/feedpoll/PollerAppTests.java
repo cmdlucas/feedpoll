@@ -1,19 +1,17 @@
 package cmd.lucas.feedpoll;
 
-import cmd.lucas.feedpoll.domain.http.contract.HttpRestRequestObject;
+import cmd.lucas.feedpoll.domain.api.http.HttpRestRequestObject;
 import cmd.lucas.feedpoll.domain.job.FeedPoller;
-import cmd.lucas.feedpoll.domain.service.NewsApi;
-import cmd.lucas.feedpoll.util.ApiKeys;
-import cmd.lucas.feedpoll.util.apirequest.newsapi.EverythingQuery;
+import cmd.lucas.feedpoll.domain.api.request.NewsApi;
+import cmd.lucas.feedpoll.domain.api.request.EverythingQuery;
+import cmd.lucas.feedpoll.domain.job.PollerAppSettings;
 import cmd.lucas.feedpoll.util.opsresponse.GeneralResponse;
 import cmd.lucas.feedpoll.util.opsresponse.ResponseType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.ApplicationEvent;
 
-import javax.validation.UnexpectedTypeException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,6 +23,9 @@ public class PollerAppTests {
     @Autowired
     private PollerApp pollerApp;
 
+    @Autowired
+    private PollerAppSettings pollerAppSettings;
+
     @MockBean
     private HttpRestRequestObject httpRestRequestObject;
 
@@ -33,9 +34,9 @@ public class PollerAppTests {
 
     @Test
     void pollerAppShouldRunGivenNumberOfTasksOnAppStart() {
-        pollerApp.start();
-        assertThat(pollerApp.getExecutorService().shutdownNow().size())
-                .isEqualTo(pollerApp.getKeywords().length);
+        pollerApp.startPolling();
+        assertThat(pollerAppSettings.getExecutorService().shutdownNow().size())
+                .isEqualTo(pollerAppSettings.getKeywords().length);
     }
 
     @Test
@@ -64,7 +65,7 @@ public class PollerAppTests {
     @Test
     void newsApiRequestShouldSucceedWhenQueryIsDefined() {
         httpRestRequestObject.setQuery(
-                new EverythingQuery(ApiKeys.NEWS_API_DOT_ORG, "covid", 2, 1));
+                new EverythingQuery(pollerAppSettings.getApiKey(), "covid", 2));
 
         Optional<GeneralResponse> response = httpRestRequestObject.get();
 

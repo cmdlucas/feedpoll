@@ -1,7 +1,6 @@
 package cmd.lucas.feedpoll.config;
 
-import cmd.lucas.feedpoll.qualifier.NewsApiConnection;
-import cmd.lucas.feedpoll.util.Urls;
+import cmd.lucas.feedpoll.config.qualifier.NewsApiConnection;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import okhttp3.Interceptor;
@@ -9,6 +8,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,6 +22,9 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 @ComponentScan(basePackages = "cmd.lucas.feedpoll")
 public class ConnectionConfig {
+
+    @Value("${newsapi.baseurl}")
+    private String NEWS_API_ORG_BASE_URL;
 
     @Bean
     public Gson gson(){
@@ -58,8 +61,8 @@ public class ConnectionConfig {
         return httpClient
                 .addInterceptor(requestInterceptor)
                 .addInterceptor(httpLoggingInterceptor)
-                .readTimeout(360, TimeUnit.SECONDS)
-                .connectTimeout(360, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
                 .build();
     }
 
@@ -70,7 +73,7 @@ public class ConnectionConfig {
     Retrofit newsApiConnection(OkHttpClient okHttpClient, GsonConverterFactory gsonConverterFactory){
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(Urls.NEWS_API_ORG_BASE_URL)
+                .baseUrl(NEWS_API_ORG_BASE_URL)
                 .addConverterFactory(gsonConverterFactory)
                 .build();
     }

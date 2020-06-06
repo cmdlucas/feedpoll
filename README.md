@@ -2,6 +2,8 @@
 
 This project polls for news  from the [newsapi.org](https://newsapi.org) API and stores the information in an in-memory DB (H2).
 
+This project is built mainly on the Layered pattern
+
 ## Install 
 
 #### Git
